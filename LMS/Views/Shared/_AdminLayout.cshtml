@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  height:100%;
+}
+
+.flex-container > div {
+  border:2px solid black;
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  
+}
+
+li a:hover {
+  background-color: #111;
+}
+.logo{
+    color:white;
+    margin-left:10px;
+    float:left;
+}
+.tbl{
+    width:100%;
+    border: 2px solid black;
+    margin:10px;
+    display:flex;
+
+}
+.content{
+    padding-bottom: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  padding-bottom: 30px;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  text-align: center;
+}
+th{
+    background-color: #333;
+    color: white;
+    text-align: center;
+  padding: 14px 16px;
+}
+
+</style>
+</head>
+<body>
+  <div>
+  <div>
+    <ul>
+        <li class="logo" ><img src="/imgs/books.png" style="width:40px;height:40px;"/></li>
+        <li class="logo"><p>LMS</p></li>
+        <li><a class="active" asp-area="" asp-controller="LogIn" asp-action="Index">Logout</a></li>
+        <li><a class="active" asp-area="" asp-controller="LendRequests" asp-action="Index">Lend/Return History</a></li>
+        <li><a class="active" asp-area="" asp-controller="LendRequests" asp-action="LentBook">Lent Books</a></li>
+        <li><a class="active" asp-area="" asp-controller="Admin" asp-action="Index">Request List</a></li>
+        <li><a class="active" asp-area="" asp-controller="Accounts" asp-action="Index">Users</a></li>
+        <li><a class="active" asp-area="" asp-controller="Publishers" asp-action="Index">Publishers</a></li>
+        <li><a class="active" asp-area="" asp-controller="Authors" asp-action="Index">Authors</a></li>
+        <li><a class="active" asp-area="" asp-controller="Books" asp-action="Index" >Book Inventory</a></li>
+    
+      </ul>
+  </div>
+    <div>
+        @RenderBody()
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
+
+
+
+
+
+

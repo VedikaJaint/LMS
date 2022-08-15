@@ -1,0 +1,81 @@
+﻿@model IEnumerable<LMS.Models.Book>
+
+    @{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+
+<style>
+    .inpt{
+        width:800px;
+        height:25px;
+    }
+    .btn{
+        height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    }
+
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  float:left;
+  
+  margin:30px;
+  padding-bottom:30px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+ 
+}
+
+.book_container{
+    display:inline;
+    justify-content:center;
+    align-items:center;
+}
+</style>
+<div>
+    <form style="margin-bottom:20px;margin-top:20px;">
+    <input class="inpt" type="text" name="searchString" placeholder="Search..."/>
+    <input class="btn"  type="submit"/>
+    </form>
+<div class="container mt-4">
+    
+
+    <div class="row">
+
+<div class="book_container">
+
+       @foreach(var item in Model)
+        {   
+           
+        
+
+
+
+        <div class="card">
+  <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>@Html.DisplayFor(modelItem => item.BookTitle)</b></h4> 
+    <p>No. of copies available: @Html.DisplayFor(modelItem => item.NoOfCopies)</p> 
+    <p>Category: @Html.DisplayFor(modelItem => item.Category)</p>
+    <form method="post" asp-controller="User" asp-action="RequestToLend" asp-route-bookId=@item.BookId>
+                    <input type="submit" value="Request to Borrow"/>
+                    </form>
+  </div>
+</div>
+
+
+        }
+        </div>
+    </div>
+</div>
+</div>
